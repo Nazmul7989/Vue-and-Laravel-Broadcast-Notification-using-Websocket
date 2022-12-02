@@ -82,6 +82,11 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        $request->validate([
+            'name'        => 'required|string',
+            'description' => 'required|string',
+        ]);
+
         $post->name = $request->name;
         $post->description = $request->description;
         $post->save();
